@@ -530,7 +530,7 @@
 <div class="modal__overlay" id="projectModal">
   <div class="modal__card">
     <div class="modal__close" id="modalClose"><i class="ri-close-line"></i></div>
-    <div class="modal__media"><span class="rec" id="modalRec">screen recording</span></div>
+    <div class="modal__media" id="modalMedia"><span class="rec" id="modalRec">screen recording</span></div>
     <div class="modal__body">
       <h3 id="modalTitle"></h3>
       <p id="modalDesc"></p>
@@ -600,6 +600,7 @@
       desc: "AI-proctored quiz platform with role-based dashboards, OTP verification, live camera proctoring, violation logging, and PDF reports. Built solo, end to end.",
       stack: ["Flask", "SQLite", "OpenCV", "Flask-Mail", "Chart.js"],
       github: "#", live: "#",
+      video: "",
       grad: "linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('quizpro-hero.png') center/cover no-repeat"
     },
     {
@@ -607,6 +608,7 @@
       desc: "Trained and compared four ML models — Logistic Regression, Decision Tree, Random Forest, XGBoost — on the IBM Telco dataset. Built a Flask app and Gradio Colab interface for live predictions.",
       stack: ["Python", "Scikit-learn", "Flask", "Pandas"],
       github: "#", live: "#",
+      video: "",
       grad: "linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('churn-hero.png') center/cover no-repeat"
     },
     {
@@ -614,6 +616,7 @@
       desc: "Solo-built full-stack insurance claim processing system with role-based dashboards, rule-based fraud scoring, and audit trail. Full relational schema with normalization and stored-procedure equivalents.",
       stack: ["Flask", "MySQL", "Python"],
       github: "https://github.com/Kelash-Kanjani/Smart-Insurance-System", live: "https://KelashKanjani14.pythonanywhere.com",
+      video: "Smart-Insurance-System.mp4",
       grad: "linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('insurance-hero.png') center/cover no-repeat"
     },
     {
@@ -622,6 +625,7 @@
       stack: ["Flask", "SQLite"],
       github: "https://github.com/Kelash-Kanjani/Final-Updated-Blood-Bank-System", live: "https://KelashKumar67565.pythonanywhere.com",
       credentials: "Username: admin · Password: iqra12345",
+      video: "",
       grad: "linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('bloodbank-hero.png') center/cover no-repeat"
     },
     {
@@ -629,6 +633,7 @@
       desc: "An LL(1) parser for a custom Arabic-keyword language, with CFG design, a lexer, and three-address code generation. Documented every parsing stage end to end.",
       stack: ["Python", "Compiler Design"],
       github: "#", live: "",
+      video: "",
       grad: "linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('arabix-hero.png') center/cover no-repeat"
     }
   ];
@@ -699,6 +704,12 @@
     const p = projects[i];
     document.getElementById('modalTitle').textContent = p.name;
     document.getElementById('modalDesc').textContent = p.desc;
+    const modalMedia = document.getElementById('modalMedia');
+    if(p.video){
+      modalMedia.innerHTML = `<video src="${p.video}" controls playsinline style="width:100%;height:100%;object-fit:cover;border-radius:1.4rem 1.4rem 0 0;"></video>`;
+    } else {
+      modalMedia.innerHTML = `<span class="rec" id="modalRec">screen recording</span>`;
+    }
     const credsBox = document.getElementById('modalCreds');
     if(p.credentials){ credsBox.textContent = p.credentials; credsBox.style.display = 'block'; }
     else{ credsBox.style.display = 'none'; }
